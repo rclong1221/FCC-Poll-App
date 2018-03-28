@@ -9,8 +9,7 @@
   },
   "homepage": "",
   "bugs": "https://github.com/rclong1221/FCC-Poll-App/issues",
-  "keywords": [
-  ],
+  "keywords": [],
   "scripts": {
     "start": "node server.js"
   },
@@ -23,6 +22,7 @@
     "express-session": "^1.11.3",
     "mongoose": "^4.1.0",
     "passport": "^0.3.0",
-    "passport-github": "^1.0.0"
+    "passport-github": "^1.0.0",
+    "path": "^0.12.7"
   }
 }
