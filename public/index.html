@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <html>
 
 	<head>
 		<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
-		
+
 		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 	</head>
 
@@ -21,7 +21,7 @@
 			<br />
 			<p class="clementine-text">Clementine.js</p>
 		</div>
-	
+
 		<div class="container">
 			<p>You have clicked the button <span id="click-nbr"></span> times.</p>
 			<br />
@@ -30,7 +30,47 @@
 				<button class="btn btn-delete">RESET</button>
 			</div>
 		</div>
-		
+
+		<script type="text/javascript" src="common/ajax-functions.js"></script>
+		<script type="text/javascript" src="controllers/clickController.client.js"></script>
+		<script type="text/javascript" src="controllers/userController.client.js"></script>
+	</body>
+
+</html> -->
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Pollerinho - create, participate, and share any poll...</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<header>
+		<p>Welcome, <span id="display-name"></span>!</p>
+		<a class="menu" href="/profile">Profile</a>
+		<p>|</p>
+		<a class="menu" href="/logout">Logout</a>
+	</header>
+
+	<body>
+		<div class="container">
+			<img src="/public/img/clementine_150.png" />
+			<br />
+			<p class="clementine-text">Clementine.js</p>
+		</div>
+
+		<div class="container">
+			<p>You have clicked the button <span id="click-nbr"></span> times.</p>
+			<br />
+			<div class="btn-container">
+				<button type="submit" class="btn btn-add">CLICK ME!</button>
+				<button class="btn btn-delete">RESET</button>
+			</div>
+		</div>
+
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
 		<script type="text/javascript" src="controllers/clickController.client.js"></script>
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
