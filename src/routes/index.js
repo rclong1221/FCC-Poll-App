@@ -77,7 +77,7 @@ module.exports = function (app, passport) {
 			Poll.getAll(req, res)
 		})
 
-	app.route('/poll-:pollID')
+	app.route('/poll/:pollID')
 		.get(function (req, res) {
 			Poll.getPoll(req, res)
 		})
