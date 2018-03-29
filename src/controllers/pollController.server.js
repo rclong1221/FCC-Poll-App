@@ -13,15 +13,19 @@ class Poll {
   }
 
   static createPoll(req, res) {
+    let v = req.body.options.map(function (item) {
+      return 0;
+    })
+    let vs = req.body.options.map(function (item) {
+      return [];
+    })
     let d = new Polls({
       publicID: "1",
       creator: req.user.github.id || req.user.twitter.id,
       question: req.body.question,
       options: req.body.options,
-      votes: [{
-        count: 0,
-        voters: []
-      }]
+      votes: v,
+      voters: vs
     })
     d.save(function (err) {
       if (err) throw err
