@@ -37,7 +37,7 @@ module.exports = function (app, passport) {
 			res.sendFile(path + '/public/profile.html')
 		})
 
-	app.route('/api/:id')
+	app.route('/api/user/:id')
 		.get(isLoggedIn, function (req, res) {
 			res.json(req.user.github)
 		})
@@ -51,18 +51,30 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}))
 
+	// app.route('/create')
+	// 	.get(isLoggedIn, Poll.createPoll)
+
 	app.route('/create')
-		.get(isLoggedIn, Poll.createPoll)
+		.get(isLoggedIn, function (req, res) {
+			res.sendFile(path + '/public/create.html')
+		})
 
+	app.route('/submit-poll')
+		.post(isLoggedIn, Poll.createPoll)
 
-	app.route('/api/:id/clicks')
+	app.route('/api/user/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
 		.delete(isLoggedIn, clickHandler.resetClicks)
 
-	app.route('/api/:id/polls')
+	app.route('/api/user/:id/polls/')
 		.get(function (req, res) {
 			res.render('partials/pollView', { pollText: "Shit", pollURL: "#", pollID: 20 })
+		})
+
+	app.route('/api/polls/')
+		.get(function (req, res) {
+			Poll.getAll(req, res)
 		})
 
 	app.route('/poll-:pollID')
