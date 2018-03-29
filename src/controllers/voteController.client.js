@@ -1,5 +1,7 @@
 var path = window.location.pathname;
 
+var tweet = 'https://twitter.com/intent/tweet?text=' + encodeURI("Check out my poll @ ") + encodeURI(window.location.href);
+
 var question_start = "<div class='question'>";
 var question_end = "</div>";
 var option_start = "<button class='option-btn btn-secondary btn-block' type='button'>";
@@ -22,4 +24,11 @@ function getData(u) {
   });
 }
 
-$(document).ready(getData("/api" + path));
+function tweet() {
+
+}
+
+$(document).ready(function () {
+  $('#tweet').attr('href', tweet);
+  getData("/api" + path);
+});
