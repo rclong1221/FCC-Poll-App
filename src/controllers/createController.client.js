@@ -1,4 +1,4 @@
-var optionsCount = 1;
+var optionsCount = 2;
 var inputs1 = "<div class='option'><span>Option "
 var inputs2 = ": </span><input class='option-input' id='q-i-"
 var inputs3 = "'></input></div>"
@@ -12,7 +12,7 @@ function addOption() {
 function submitForm() {
   var question = $('#q-i').val();
   var options = [];
-  for (var i = 1; i <= optionsCount; i++) {
+  for (var i = optionsCount; i <= optionsCount; i++) {
     var inputID = '#q-i-' + i;
     // console.log(`inputID: ${inputID}`);
     // console.log($(inputID).val());
