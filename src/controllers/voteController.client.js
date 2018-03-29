@@ -2,13 +2,11 @@ var path = window.location.pathname;
 
 var question_start = "<div class='question'>";
 var question_end = "</div>";
-var option_start = "<button class='option-btn btn' type='button'>";
+var option_start = "<button class='option-btn btn-secondary btn-block' type='button'>";
 var option_end = "</button>";
 
 function getData(u) {
-  console.log(u);
   $.get(u, function (data) {
-    console.log(data);
     var h = question_start;
     h += data.question;
     h += question_end;
