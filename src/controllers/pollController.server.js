@@ -24,8 +24,8 @@ class Poll {
   static createPoll(req, res) {
     let d = new Polls({
       publicID: "1",
-      question: "How do I save?",
-      options: ["Yes", "No"],
+      question: req.body.question,
+      options: req.body.options,
       votes: [{
         count: 0,
         voters: []
@@ -33,8 +33,15 @@ class Poll {
     })
     d.save(function (err) {
       if (err) throw err
-      res.redirect('/')
+      res.status(200).send({ redirect: '/' })
     })
+  }
+  static getAll(req, res) {
+    Polls.find()
+      .exec(function (err, result) {
+        if (err) throw err
+        res.json(result)
+      })
   }
 }
 

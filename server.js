@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const handlebars = require('express-handlebars')
+const bodyParser = require("body-parser");
 
 const app = express()
 require('dotenv').load()
@@ -28,6 +29,8 @@ app.set('view engine', 'handlebars')
 app.use('/controllers', express.static(process.cwd() + '/src/controllers'))
 app.use('/public', express.static(process.cwd() + '/public'))
 app.use('/common', express.static(process.cwd() + '/src/common'))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.use(session({
 	secret: 'secretClementine',

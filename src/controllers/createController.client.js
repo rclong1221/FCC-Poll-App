@@ -22,7 +22,6 @@ function submitForm() {
     "question": question,
     "options": options
   };
-  console.log(poll);
   postForm(poll);
 }
 
@@ -33,18 +32,25 @@ function postForm(reqBody) {
     url: reqUrl,
     data: reqBody,
     dataType: "json",
-    success: function(data, textStatus) {
+    success: function(data) {
+      console.log("Success");
+      console.log(data);
       if (data.redirect) {
         // data.redirect contains the string URL to redirect to
+        console.log("If");
         window.location.href = data.redirect;
       }
       else {
         // data.form contains the HTML for the replacement form
         // toast
         // $("#myform").replaceWith(data.form);
-        console.log("Error");
+        console.log("Else");
       }
-    }
+    },
+    error: function (data) {
+        console.log("Error");
+        console.log(data);
+      },
   });
 }
 
