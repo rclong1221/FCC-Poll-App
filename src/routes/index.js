@@ -51,6 +51,20 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}))
 
+	app.route('/api/user/:id')
+		.get(isLoggedIn, function (req, res) {
+			res.json(req.user.twitter)
+		})
+
+	app.route('/auth/twitter')
+		.get(passport.authenticate('twitter'))
+
+	app.route('/auth/twitter/callback')
+		.get(passport.authenticate('twitter', {
+			successRedirect: '/',
+			failureRedirect: '/login'
+		}))
+
 	// app.route('/create')
 	// 	.get(isLoggedIn, Poll.createPoll)
 
