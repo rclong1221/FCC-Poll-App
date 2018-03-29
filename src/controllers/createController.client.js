@@ -12,7 +12,7 @@ function addOption() {
 function submitForm() {
   var question = $('#q-i').val();
   var options = [];
-  for (var i = optionsCount; i <= optionsCount; i++) {
+  for (var i = 1; i <= optionsCount; i++) {
     var inputID = '#q-i-' + i;
     // console.log(`inputID: ${inputID}`);
     // console.log($(inputID).val());
