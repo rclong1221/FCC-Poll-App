@@ -15,6 +15,7 @@ class Poll {
   static createPoll(req, res) {
     let d = new Polls({
       publicID: "1",
+      creator: req.user.github.id,
       question: req.body.question,
       options: req.body.options,
       votes: [{

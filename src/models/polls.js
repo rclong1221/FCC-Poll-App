@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 
 var Polls = new Schema({
   publicID: String,
+  creator: String,
   question: String,
   options: [String],
   votes: [{
