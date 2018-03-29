@@ -67,16 +67,12 @@ module.exports = function (app, passport) {
 			res.sendFile(path + '/public/my-polls.html')
 		})
 
-	app.route('/submit-poll')
-		.post(isLoggedIn, Poll.createPoll)
-
 	app.route('/api/user/:id/polls/')
 		.get(isLoggedIn, Poll.getMyPolls)
 
 	app.route('/api/polls/')
-		.get(function (req, res) {
-			Poll.getAll(req, res)
-		})
+		.get(Poll.getAll)
+		.post(isLoggedIn, Poll.createPoll)
 
 	app.route('/api/polls/:pollID')
 		.get(Poll.getPoll)

@@ -26,7 +26,7 @@ function submitForm() {
 }
 
 function postForm(reqBody) {
-  var reqUrl = "/submit-poll";
+  var reqUrl = "/api/polls/";
   $.ajax({
     type: "POST",
     url: reqUrl,
