@@ -11,7 +11,7 @@ const bodyParser = require('body-parser')
 
 const app = express()
 require('dotenv').load()
-require('./src/lib/passport')(passport)
+require('./src/lib/githubPassport')(passport)
 require('./src/lib/twitterPassport')(passport)
 
 mongoose.connect(process.env.MONGO_URI)
