@@ -2,6 +2,7 @@
 
 var path = process.cwd()
 var ClickHandler = require(path + '/src/controllers/clickHandler.server.js')
+var Poll = require(path + '/src/controllers/pollController.server.js')
 
 module.exports = function (app, passport) {
 
@@ -50,6 +51,10 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}))
 
+	app.route('/create')
+		.get(isLoggedIn, Poll.createPoll)
+
+
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
@@ -58,5 +63,10 @@ module.exports = function (app, passport) {
 	app.route('/api/:id/polls')
 		.get(function (req, res) {
 			res.render('partials/pollView', { pollText: "Shit", pollURL: "#", pollID: 20 })
+		})
+
+	app.route('/poll-:pollID')
+		.get(function (req, res) {
+			Poll.getPoll(req, res)
 		})
 }

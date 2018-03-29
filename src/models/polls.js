@@ -4,12 +4,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 var Polls = new Schema({
+  publicID: String,
   question: String,
   options: [String],
   votes: [{
-    user_id: String,
-    vote: Number
+    count: Number,
+    voters: [String]
   }]
 })
 
-export.modules = mongoose.model('Polls', Polls)
+module.exports = mongoose.model('Polls', Polls)
