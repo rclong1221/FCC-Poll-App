@@ -77,8 +77,13 @@ module.exports = function (app, passport) {
 			Poll.getAll(req, res)
 		})
 
-	app.route('/poll/:pollID')
+	app.route('/api/polls/:pollID')
 		.get(function (req, res) {
 			Poll.getPoll(req, res)
+		})
+
+	app.route('/polls/:pollID')
+		.get(function (req, res) {
+			res.sendFile(path + '/public/vote.html')
 		})
 }
