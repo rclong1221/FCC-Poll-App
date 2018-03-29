@@ -33,11 +33,7 @@ function postForm(reqBody) {
     data: reqBody,
     dataType: "json",
     success: function(data) {
-      console.log("Success");
-      console.log(data);
       if (data.redirect) {
-        // data.redirect contains the string URL to redirect to
-        console.log("If");
         window.location.href = data.redirect;
       }
       else {
