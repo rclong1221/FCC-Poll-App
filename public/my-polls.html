@@ -23,7 +23,7 @@
 			<div class="my-2 my-lg-0 mr-auto">
 			</div>
 	    <ul class="navbar-nav">
-				<li class="nav-item">
+        <li class="nav-item">
 	        <a class="nav-link" href="/my-polls">My Polls</a>
 	      </li>
 				<li class="nav-item">
@@ -43,15 +43,9 @@
 		<div class="container-fluid">
 			<!-- New row created and used for each poll -->
 			<div class="row">
-				<div class='poll-col col-xs-12 col-sm-12 col-md-6' id='p-c'>
+				<div class='my-polls col-12' id='m-p'>
 
 				</div>
-        <div class='graph-col col-xs-12 col-sm-12 col-md-6' id='g-c'>
-					<canvas id="myChart" width="400" height="400"></canvas>
-				</div>
-				<a class='btn btn-social' id='tweet'
-    href='' target='_blank'>
-  Tweet</a>
 			</div>
 
 		</div>
@@ -60,6 +54,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
-		<script type="text/javascript" src="../../controllers/voteController.client.js"></script>
+		<script type="text/javascript" src="../../controllers/myPollsController.client.js"></script>
 	</body>
 </html>

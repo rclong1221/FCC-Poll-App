@@ -73,6 +73,11 @@ module.exports = function (app, passport) {
 			res.sendFile(path + '/public/create.html')
 		})
 
+	app.route('/my-polls')
+		.get(isLoggedIn, function (req, res) {
+			res.sendFile(path + '/public/my-polls.html')
+		})
+
 	app.route('/submit-poll')
 		.post(isLoggedIn, Poll.createPoll)
 
@@ -82,9 +87,7 @@ module.exports = function (app, passport) {
 		.delete(isLoggedIn, clickHandler.resetClicks)
 
 	app.route('/api/user/:id/polls/')
-		.get(function (req, res) {
-			res.render('partials/pollView', { pollText: "Shit", pollURL: "#", pollID: 20 })
-		})
+		.get(isLoggedIn, Poll.getMyPolls)
 
 	app.route('/api/polls/')
 		.get(function (req, res) {
@@ -92,9 +95,8 @@ module.exports = function (app, passport) {
 		})
 
 	app.route('/api/polls/:pollID')
-		.get(function (req, res) {
-			Poll.getPoll(req, res)
-		})
+		.get(Poll.getPoll)
+		.delete(isLoggedIn, Poll.deletePoll)
 
 	app.route('/polls/:pollID')
 		.get(function (req, res) {

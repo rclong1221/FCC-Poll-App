@@ -40,6 +40,24 @@ class Poll {
         res.json(result)
       })
   }
+
+  static deletePoll(req, res) {
+    //TODO: Middleware to check if logged in user has privileges to delete
+    //TODO: content
+    Polls.deleteOne({ _id: req.body._id })
+      .exec(function (err, result) {
+        if (err) throw err
+        res.status(200).send({ redirect: '/' })
+      })
+  }
+
+  static getMyPolls(req, res) {
+    Polls.find({ creator: req.user.github.id || req.user.twitter.id })
+      .exec(function (err, result) {
+        if (err) throw err
+        res.json(result)
+      })
+  }
 }
 
 module.exports = Poll
