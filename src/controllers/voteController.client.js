@@ -1,19 +1,26 @@
 var path = window.location.pathname;
 
-var p1 = "<div class='col-xs-12 col-sm-6 col-md-4' id='";
-//id
-var p2 = "'><a class='' id='";
- // id
-var p3 = "' href='/poll-";
- // id
-var p4 = "'><div class='text-center my-auto poll'>";
- // question
-var p5 = "</div></a></div>"
+var question_start = "<div class='question'>";
+var question_end = "</div>";
+var option_start = "<button class='option-btn btn' type='button'>";
+var option_end = "</button>";
 
 function getData(u) {
   console.log(u);
   $.get(u, function (data) {
     console.log(data);
+    var h = question_start;
+    h += data.question;
+    h += question_end;
+
+    for (var i = 0; i < data.options.length; i++) {
+      var o = option_start;
+      o += data.options[i];
+      o += option_end;
+      h += o;
+    }
+
+    $('#p-c').append(h);
   });
 }
 
