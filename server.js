@@ -7,11 +7,12 @@ const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
 const handlebars = require('express-handlebars')
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser')
 
 const app = express()
 require('dotenv').load()
 require('./src/lib/passport')(passport)
+require('./src/lib/twitterPassport')(passport)
 
 mongoose.connect(process.env.MONGO_URI)
 mongoose.Promise = global.Promise
