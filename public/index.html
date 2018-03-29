@@ -1,79 +1,73 @@
-<!-- <!DOCTYPE html>
-
-<html>
-
-	<head>
-		<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
-
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
-	</head>
-
-	<header>
-		<p>Welcome, <span id="display-name"></span>!</p>
-		<a class="menu" href="/profile">Profile</a>
-		<p>|</p>
-		<a class="menu" href="/logout">Logout</a>
-	</header>
-
-	<body>
-		<div class="container">
-			<img src="/public/img/clementine_150.png" />
-			<br />
-			<p class="clementine-text">Clementine.js</p>
-		</div>
-
-		<div class="container">
-			<p>You have clicked the button <span id="click-nbr"></span> times.</p>
-			<br />
-			<div class="btn-container">
-				<button type="submit" class="btn btn-add">CLICK ME!</button>
-				<button class="btn btn-delete">RESET</button>
-			</div>
-		</div>
-
-		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<script type="text/javascript" src="controllers/clickController.client.js"></script>
-		<script type="text/javascript" src="controllers/userController.client.js"></script>
-	</body>
-
-</html> -->
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title>Pollerinho - create, participate, and share any poll...</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+		<link href="main.css" rel="stylesheet" type="text/css">
 	</head>
-
 	<header>
-		<p>Welcome, <span id="display-name"></span>!</p>
-		<a class="menu" href="/profile">Profile</a>
-		<p>|</p>
-		<a class="menu" href="/logout">Logout</a>
-	</header>
+		<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">
+	    <img src="1.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+	    Pollerinho
+	  </a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
 
-	<body>
-		<div class="container">
-			<img src="/public/img/clementine_150.png" />
-			<br />
-			<p class="clementine-text">Clementine.js</p>
-		</div>
-
-		<div class="container">
-			<p>You have clicked the button <span id="click-nbr"></span> times.</p>
-			<br />
-			<div class="btn-container">
-				<button type="submit" class="btn btn-add">CLICK ME!</button>
-				<button class="btn btn-delete">RESET</button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="my-2 my-lg-0 mr-auto">
 			</div>
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Profile</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Sign Out</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+  </header>
+	<body>
+		<div class="container-fluid">
+			<!-- New row created and used for each poll -->
+			<div class="row">
+				<div class='col-xs-12 col-sm-6 col-md-4' id=''>
+					<div class='text-center poll'>
+				  <a class='' id='' href='/poll-1'>
+				    Should I where shorts?
+				  </a>
+				  </div>
+				</div>
+				<div class='col-xs-12 col-sm-6 col-md-4' id=''>
+					<div class='text-center poll'>
+				  <a class='' id='' href='/poll-2'>
+				    Should I where shorts?
+				  </a>
+			 	  </div>
+				</div>
+				<div class='col-xs-12 col-sm-6 col-md-4' id=''>
+					<div class='text-center poll'>
+				  <a class='' id='' href='/poll-3'>
+				    Should I where shorts?
+				  </a>
+			 		</div>
+				</div>
+
+			</div>
+
 		</div>
 
-		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<script type="text/javascript" src="controllers/clickController.client.js"></script>
-		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		<script type="text/javascript" src="../../common/ajax-functions.js"></script>
+		<script type="text/javascript" src="../../controllers/clickController.client.js"></script>
+		<script type="text/javascript" src="../../controllers/userController.client.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
-
 </html>
