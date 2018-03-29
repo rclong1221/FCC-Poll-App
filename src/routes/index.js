@@ -1,7 +1,6 @@
 'use strict'
 
 var path = process.cwd()
-var ClickHandler = require(path + '/src/controllers/clickHandler.server.js')
 var Poll = require(path + '/src/controllers/pollController.server.js')
 
 module.exports = function (app, passport) {
@@ -14,10 +13,8 @@ module.exports = function (app, passport) {
 		}
 	}
 
-	var clickHandler = new ClickHandler()
-
 	app.route('/')
-		.get(isLoggedIn, function (req, res) {
+		.get(function (req, res) {
 			res.sendFile(path + '/public/index.html')
 		})
 
@@ -27,7 +24,7 @@ module.exports = function (app, passport) {
 		})
 
 	app.route('/logout')
-		.get(function (req, res) {
+		.get(isLoggedIn, function (req, res) {
 			req.logout()
 			res.redirect('/login')
 		})
@@ -39,7 +36,7 @@ module.exports = function (app, passport) {
 
 	app.route('/api/user/:id')
 		.get(isLoggedIn, function (req, res) {
-			res.json(req.user.github)
+			res.json(req.user.github || req.user.twitter)
 		})
 
 	app.route('/auth/github')
@@ -51,11 +48,6 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}))
 
-	app.route('/api/user/:id')
-		.get(isLoggedIn, function (req, res) {
-			res.json(req.user.twitter)
-		})
-
 	app.route('/auth/twitter')
 		.get(passport.authenticate('twitter'))
 
@@ -64,9 +56,6 @@ module.exports = function (app, passport) {
 			successRedirect: '/',
 			failureRedirect: '/login'
 		}))
-
-	// app.route('/create')
-	// 	.get(isLoggedIn, Poll.createPoll)
 
 	app.route('/create')
 		.get(isLoggedIn, function (req, res) {
@@ -80,11 +69,6 @@ module.exports = function (app, passport) {
 
 	app.route('/submit-poll')
 		.post(isLoggedIn, Poll.createPoll)
-
-	app.route('/api/user/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick)
-		.delete(isLoggedIn, clickHandler.resetClicks)
 
 	app.route('/api/user/:id/polls/')
 		.get(isLoggedIn, Poll.getMyPolls)
