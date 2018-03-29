@@ -5,7 +5,7 @@ const Polls = require(path + '/src/models/polls.js')
 class Poll {
   static getPoll(req, res) {
     let pID = req.params.pollID
-    Polls.findOne({publicID: pID})
+    Polls.findOne({_id: pID})
       .exec(function (err, result) {
         if (err) throw err
         res.json(result)
