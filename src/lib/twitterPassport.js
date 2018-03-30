@@ -1,7 +1,7 @@
 'use strict'
 
 var TwitterStrategy = require('passport-twitter').Strategy
-var User = require('../models/users')
+var User = require('../models/users').User
 var configAuth = require('./twitterAuth')
 
 module.exports = function (passport) {

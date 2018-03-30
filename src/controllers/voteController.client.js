@@ -4,7 +4,8 @@ var tweet = 'https://twitter.com/intent/tweet?text=' + encodeURI("Check out my p
 
 var question_start = "<div class='question'>";
 var question_end = "</div>";
-var option_start = "<button class='option-btn btn-secondary btn-block' type='button'>";
+var option_start = "<button class='option-btn btn-secondary btn-block' type='button' onClick={castVote('";
+var option_middle = "')}>";
 var option_end = "</button>";
 
 function getData(u) {
@@ -15,6 +16,8 @@ function getData(u) {
 
     for (var i = 0; i < data.options.length; i++) {
       var o = option_start;
+      o += i;
+      o += option_middle;
       o += data.options[i];
       o += option_end;
       h += o;
@@ -26,7 +29,44 @@ function getData(u) {
   });
 }
 
+function castVote(index) {
+  var reqUrl = "/api" + path;
+  var reqBody = {
+    "index": index
+  }
+  $.ajax({
+    type: "PUT",
+    url: reqUrl,
+    data: reqBody,
+    dataType: "json",
+    success: function(data) {
+      if (data.redirect) {
+        window.location.href = data.redirect;
+      }
+      else {
+        // data.form contains the HTML for the replacement form
+        // toast
+        // $("#myform").replaceWith(data.form);
+        console.log("Else");
+      }
+    },
+    error: function (data) {
+        console.log("Error");
+        console.log(data);
+      },
+  });
+}
+
+function getVotes(data) {
+  var a = [];
+  for (var i = 0; i < data.voters.length; i++) {
+    a.push(data.voters[i].voters.length);
+  }
+  return a;
+}
+
 function makeChart(data) {
+  var votes = getVotes(data);
   var ctx = $("#myChart");
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -34,7 +74,7 @@ function makeChart(data) {
       labels: data.options,
       datasets: [{
         label: 'Number of Votes',
-          data: data.votes,
+          data: votes,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',

@@ -76,6 +76,7 @@ module.exports = function (app, passport) {
 
 	app.route('/api/polls/:pollID')
 		.get(Poll.getPoll)
+		.put(Poll.votePoll)
 		.delete(isLoggedIn, Poll.deletePoll)
 
 	app.route('/polls/:pollID')

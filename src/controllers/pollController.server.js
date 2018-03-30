@@ -58,6 +58,40 @@ class Poll {
         res.json(result)
       })
   }
+
+  static votePoll(req, res) {
+    // Get IP Address
+    let ip = req.ip.slice(":")
+    ip = ip[ip.length - 1]
+
+    // Use AuthID or IP address as voting token
+    let uid = (req.user) ? (req.user.github.id || req.user.twitter.id) : ip
+
+    Polls.findOne({ _id: req.params.pollID })
+      .then(function (poll) {
+        if (poll) {
+          // Remove old user vote
+          poll.voters = poll.voters.filter(function (votes) {
+            votes.voters = votes.voters.filter(function (vote) {
+              return vote !== (uid)
+            })
+            return votes
+          })
+
+          // Add new user vote
+          poll.voters[req.body.index].voters.push(uid)
+
+          // Save to database
+          poll.save(function (err) {
+            if (err) throw err
+            res.status(200).send({ redirect: req.get('referer') })
+          })
+        }
+      })
+      .catch(function (err) {
+        throw err
+      });
+    }
 }
 
 module.exports = Poll
