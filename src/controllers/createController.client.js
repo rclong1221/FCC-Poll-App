@@ -1,7 +1,14 @@
 var optionsCount = 2;
-var inputs1 = "<div class='option'><span>Option "
-var inputs2 = ": </span><input class='option-input' id='q-i-"
-var inputs3 = "'></input></div>"
+var inputs1 = "<div class='input-group input-group-md mb-3'><div class='option input-group-prepend'><span class='input-group-text' id='inputGroup-sizing-md'>Option "
+var inputs2 = ": </span><input type='text' aria-label='Medium' class='option-input form-control' aria-describedby='inputGroup-sizing-md'  id='q-i-"
+var inputs3 = "'></input></div></div>"
+
+// <div class="input-group input-group-sm mb-3">
+//   <div class="input-group-prepend">
+//     <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+//   </div>
+//   <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+// </div>
 
 function addOption() {
   optionsCount += 1;

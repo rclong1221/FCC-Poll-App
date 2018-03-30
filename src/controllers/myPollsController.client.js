@@ -1,16 +1,20 @@
-var p1 = "<div class='col-9' id='";
+var p1 = "<div class='row no-gutters my-1'><div class='col-xs-12 col-sm-12 col-md-8 col-lg-10' id='";
 //id
 var p2 = "'><a class='' id='";
  // id
 var p3 = "' href='/polls/";
  // id
-var p4 = "'><div class='text-center my-auto poll'>";
+var p4 = "'><div class='text-center my-auto poll my-polls-poll'>";
  // question
 var p5 = "</div></a></div>"
 
-var p6 = "<div class='col-3'><button class='btn btn-danger' type='button' onClick={deletePoll('"
+var p6 = "<div class='col-xs-6 col-sm-6 col-md-2 col-lg-1'><a href='/edit/"
 // id
-var p7 = "')}>Delete Poll</button></div>"
+var p7 = "/'><button class='btn btn-info btn-block my-edit-btn' type='button'>Edit</button></a></div>"
+
+var p8 = "<div class='col-xs-6 col-sm-6 col-md-2 col-lg-1'><button class='btn btn-danger btn-block my-delete-btn' type='button' onClick={deletePoll('"
+// id
+var p9 = "')}>Delete</button></div></div>"
 
 function deletePoll(id) {
   var d = { "_id": id };
@@ -44,6 +48,7 @@ function getData() {
     for (var i = 0; i < data.length; i++) {
       var entry = p1 + p2 + p3 + data[i]._id + p4 + data[i].question + p5;
       entry += p6 + data[i]._id + p7;
+      entry += p8 + data[i]._id + p9;
       $("#m-p").append(entry);
     }
   });

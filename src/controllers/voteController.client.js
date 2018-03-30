@@ -2,8 +2,8 @@ var path = window.location.pathname;
 
 var tweet = 'https://twitter.com/intent/tweet?text=' + encodeURI("Check out my poll @ ") + encodeURI(window.location.href);
 
-var question_start = "<div class='question'>";
-var question_end = "</div>";
+var question_start = "<h3 class='question text-center'>";
+var question_end = "</h3>";
 var option_start = "<button class='option-btn btn-secondary btn-block' type='button' onClick={castVote('";
 var option_middle = "')}>";
 var option_end = "</button>";
