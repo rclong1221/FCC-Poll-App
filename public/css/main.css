@@ -1,6 +1,7 @@
 /********* Fonts **********/
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:500');
+@import url('https://fonts.googleapis.com/css?family=Modak');
 
 /****** Main Styling ******/
 header *, body * {
@@ -13,7 +14,9 @@ a, a:hover, a:visited {
 
 
 /****** Header Styling ******/
-
+.navbar-brand {
+  font: 1.5em "Modak";
+}
 
 /****** Login Styling ******/
 
@@ -44,9 +47,30 @@ a, a:hover, a:visited {
 .poll:hover {
   box-shadow: 50px black;
   color: #8b4c39;
+  border-color: #8b4c39;
+}
+
+/****** OAuth Button Styling ******/
+.pollerinho-text {
+  font: 5em "Modak";
+  color: #fa8072;
+}
+
+.oauth-btn {
+  border: 2px solid #fa8072;;
+  border-radius: 5px;
+  padding: 10px 8px;
+
+  color: #fa8072;;
+}
+
+.oauth-btn:hover {
+  box-shadow: 50px black;
+  color: #8b4c39;
   border-color: #8b4c39
 }
 
+/****** my-polls Poll Styling ******/
 .my-polls-poll {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
