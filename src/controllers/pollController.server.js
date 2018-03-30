@@ -42,9 +42,7 @@ class Poll {
   }
 
   static deletePoll(req, res) {
-    //TODO: Middleware to check if logged in user has privileges to delete
-    //TODO: content
-    Polls.deleteOne({ _id: req.body._id })
+    Polls.deleteOne({ _id: req.body._id, creator: req.user.twitter.id || req.user.github.id })
       .exec(function (err, result) {
         if (err) throw err
         res.status(200).send({ redirect: '/' })
