@@ -8,16 +8,13 @@ var User = new Schema({
 		id: String,
 		displayName: String,
 		username: String,
-      publicRepos: Number
+    publicRepos: Number
 	},
 	twitter: {
 		id: String,
 		displayName: String,
 		username: String,
-	},
-   nbrClicks: {
-      clicks: Number
-   }
+	}
 })
 
 module.exports = {

@@ -44,9 +44,7 @@ function castVote(index) {
         window.location.href = data.redirect;
       }
       else {
-        // data.form contains the HTML for the replacement form
         // toast
-        // $("#myform").replaceWith(data.form);
         console.log("Else");
       }
     },

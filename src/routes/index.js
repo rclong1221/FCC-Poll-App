@@ -29,11 +29,6 @@ module.exports = function (app, passport) {
 			res.redirect('/login')
 		})
 
-	app.route('/profile')
-		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/profile.html')
-		})
-
 	app.route('/api/user/:id')
 		.get(isLoggedIn, function (req, res) {
 			res.json(req.user.github || req.user.twitter)
