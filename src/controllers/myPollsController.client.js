@@ -45,8 +45,10 @@ function deletePoll(id) {
 
 function getData() {
   $.get("/api/user/:id", function (d) {
-    user = d;
-    $.get(`/api/user/${user.twitter.id}/polls/`, function( data ) {
+    if (d.twitter) user = d.twitter.id
+    else if (d.github) user = d.github.id
+
+    $.get(`/api/user/${user}/polls/`, function( data ) {
       var h = "";
       for (var i = 0; i < data.length; i++) {
         var entry = p1 + p2 + p3 + data[i]._id + p4 + data[i].question + p5;
