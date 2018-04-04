@@ -57,17 +57,17 @@ a, a:hover, a:visited {
 }
 
 .oauth-btn {
-  border: 2px solid #fa8072;;
+  border: 2px solid #fa8072;
   border-radius: 5px;
   padding: 10px 8px;
 
-  color: #fa8072;;
+  color: #fa8072;
 }
 
 .oauth-btn:hover {
   box-shadow: 50px black;
   color: #8b4c39;
-  border-color: #8b4c39
+  border-color: #8b4c39;
 }
 
 /****** my-polls Poll Styling ******/

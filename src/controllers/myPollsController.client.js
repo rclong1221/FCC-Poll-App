@@ -1,3 +1,5 @@
+var user;
+
 var p1 = "<div class='row no-gutters my-1'><div class='col-xs-12 col-sm-12 col-md-8 col-lg-10' id='";
 //id
 var p2 = "'><a class='' id='";
@@ -42,17 +44,18 @@ function deletePoll(id) {
 }
 
 function getData() {
-  var id = "25912187";
-  $.get(`/api/user/${id}/polls/`, function( data ) {
-    var h = "";
-    for (var i = 0; i < data.length; i++) {
-      var entry = p1 + p2 + p3 + data[i]._id + p4 + data[i].question + p5;
-      entry += p6 + data[i]._id + p7;
-      entry += p8 + data[i]._id + p9;
-      $("#m-p").append(entry);
-    }
-  });
+  $.get("/api/user/:id", function (d) {
+    user = d;
+    $.get(`/api/user/${user.twitter.id}/polls/`, function( data ) {
+      var h = "";
+      for (var i = 0; i < data.length; i++) {
+        var entry = p1 + p2 + p3 + data[i]._id + p4 + data[i].question + p5;
+        entry += p6 + data[i]._id + p7;
+        entry += p8 + data[i]._id + p9;
+        $("#m-p").append(entry);
+      }
+    });
+  })
 }
-
 
 $(document).ready(getData());
