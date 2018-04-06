@@ -8,7 +8,7 @@ class Poll {
     Polls.findOne({_id: pID})
       .exec(function (err, result) {
         if (err) throw err
-        res.json(result)
+        return res.json(result)
       })
   }
 
@@ -29,7 +29,7 @@ class Poll {
     })
     d.save(function (err) {
       if (err) throw err
-      res.status(200).send({ redirect: '/' })
+      return res.status(200).send({ redirect: '/' })
     })
   }
 
@@ -37,7 +37,7 @@ class Poll {
     Polls.find()
       .exec(function (err, result) {
         if (err) throw err
-        res.json(result)
+        return res.json(result)
       })
   }
 
@@ -45,7 +45,7 @@ class Poll {
     Polls.deleteOne({ _id: req.body._id, creator: req.user.twitter.id || req.user.github.id })
       .exec(function (err, result) {
         if (err) throw err
-        res.status(200).send({ redirect: '/' })
+        return res.status(200).send({ redirect: '/' })
       })
   }
 
@@ -53,7 +53,7 @@ class Poll {
     Polls.find({ creator: req.user.github.id || req.user.twitter.id })
       .exec(function (err, result) {
         if (err) throw err
-        res.json(result)
+        return res.json(result)
       })
   }
 
@@ -82,7 +82,7 @@ class Poll {
           // Save to database
           poll.save(function (err) {
             if (err) throw err
-            res.status(200).send({ redirect: req.get('referer') })
+            return res.status(200).send({ redirect: req.get('referer') })
           })
         }
       })
