@@ -13,14 +13,18 @@ module.exports = function (app, passport) {
 		}
 	}
 
+	function loggedIn (req) {
+		return (req.isAuthenticated()) ? true : false
+	}
+
 	app.route('/')
 		.get(function (req, res) {
-			res.sendFile(path + '/public/index.html')
+			res.render('index', {loggedIn: loggedIn(req)})
 		})
 
 	app.route('/login')
 		.get(function (req, res) {
-			res.sendFile(path + '/public/login.html')
+			res.render('login', {loggedIn: loggedIn(req)})
 		})
 
 	app.route('/logout')
@@ -54,12 +58,12 @@ module.exports = function (app, passport) {
 
 	app.route('/create')
 		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/create.html')
+			res.render('create', {loggedIn: loggedIn(req)})
 		})
 
 	app.route('/my-polls')
 		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/my-polls.html')
+			res.render('my-polls', {loggedIn: loggedIn(req)})
 		})
 
 	app.route('/api/user/:id/polls/')
@@ -76,6 +80,6 @@ module.exports = function (app, passport) {
 
 	app.route('/polls/:pollID')
 		.get(function (req, res) {
-			res.sendFile(path + '/public/vote.html')
+			res.render('vote', {loggedIn: loggedIn(req)})
 		})
 }

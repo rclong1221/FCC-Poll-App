@@ -1,0 +1,51 @@
+<div class="container-fluid">
+	<!-- New row created and used for each poll -->
+	<div class="row px-5 py-5">
+		<div class='col-12 mx-5' id=''>
+			<form class='poll-form'>
+
+				<div class='input-group input-group-md mb-3'>
+					<div class='option input-group-prepend'>
+						<span class='input-group-text' id='inputGroup-sizing-md'>
+							Question:
+						</span>
+						<input type='text' aria-label='Medium' class='question-input form-control' aria-describedby='inputGroup-sizing-md'  id='q-i'/>
+					</div>
+				</div>
+
+				<div class='inputs-container'>
+
+					<div class='input-group input-group-md mb-3'>
+						<div class='option input-group-prepend'>
+							<span class='input-group-text' id='inputGroup-sizing-md'>
+								Option 1:
+							</span>
+							<input type='text' aria-label='Medium' class='option-input form-control' aria-describedby='inputGroup-sizing-md'  id='q-i-1'/>
+						</div>
+					</div>
+
+					<div class='input-group input-group-md mb-3'>
+						<div class='option input-group-prepend'>
+							<span class='input-group-text' id='inputGroup-sizing-md'>
+								Option 2:
+							</span>
+							<input type='text' aria-label='Medium' class='option-input form-control' aria-describedby='inputGroup-sizing-md'  id='q-i-2'/>
+						</div>
+					</div>
+
+				</div>
+				<div class='controls-container'>
+				<button class='btn btn-info add-option-btn' onClick={addOption()} type='button'>+</button>
+				<a class='btn btn-danger cancel-btn'>Cancel</a>
+				<button class='btn btn-primary submit-btn' onClick={submitForm()} type='button'>Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../controllers/createController.client.js"></script>
