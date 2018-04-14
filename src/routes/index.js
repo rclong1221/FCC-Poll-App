@@ -68,6 +68,7 @@ module.exports = function (app, passport) {
 
 	app.route('/api/user/:id/polls/')
 		.get(isLoggedIn, Poll.getMyPolls)
+		.post(isLoggedIn, Poll.editPoll)
 
 	app.route('/api/polls/')
 		.get(Poll.getAll)
@@ -81,5 +82,10 @@ module.exports = function (app, passport) {
 	app.route('/polls/:pollID')
 		.get(function (req, res) {
 			res.render('vote', {loggedIn: loggedIn(req)})
+		})
+
+	app.route('/edit/:pid')
+		.get(isLoggedIn, function (req, res) {
+			res.render('edit', {loggedIn: loggedIn(req)})
 		})
 }
