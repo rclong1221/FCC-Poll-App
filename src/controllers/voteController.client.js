@@ -4,7 +4,7 @@ var tweet = 'https://twitter.com/intent/tweet?text=' + encodeURI("Check out my p
 
 var question_start = "<h3 class='question text-center'>";
 var question_end = "</h3>";
-var option_start = "<button class='option-btn btn-secondary btn-block' type='button' onClick={castVote('";
+var option_start = "<button class='btn btn-outline-light btn-block poll' type='button' onClick={castVote('";
 var option_middle = "')}>";
 var option_end = "</button>";
 
