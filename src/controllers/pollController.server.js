@@ -5,7 +5,7 @@ class Poll {
   static getPoll(req, res) {
     Polls.findOne({_id: req.params.pollID})
     .exec(function (err, result) {
-      if (err) throw err
+      if (err) console.error(err)
       return res.json(result)
     })
   }
@@ -23,23 +23,22 @@ class Poll {
       voters: vs
     })
     d.save(function (err) {
-      if (err) throw err
+      if (err) console.error(err)
       return res.status(200).send({ redirect: '/' })
     })
   }
 
   static getAll(req, res) {
-    Polls.find()
-      .exec(function (err, result) {
-        if (err) throw err
-        return res.json(result)
-      })
+    Polls.find().exec(function (err, result) {
+      if (err) console.error(err)
+      return res.json(result)
+    })
   }
 
   static deletePoll(req, res) {
     Polls.deleteOne({ _id: req.body._id, creator: req.user.twitter.id || req.user.github.id })
     .exec(function (err, result) {
-      if (err) throw err
+      if (err) console.error(err)
       return res.status(200).send({ redirect: '/' })
     })
   }
@@ -47,7 +46,7 @@ class Poll {
   static getMyPolls(req, res) {
     Polls.find({ creator: req.user.github.id || req.user.twitter.id })
     .exec(function (err, result) {
-      if (err) throw err
+      if (err) console.error(err)
       return res.json(result)
     })
   }
@@ -75,14 +74,14 @@ class Poll {
         poll.voters[req.body.index].voters.push(uid)
 
         // Save to database
-        poll.save(function (err) {
-          if (err) throw err
-          return res.status(200).send({ redirect: req.get('referer') })
-        })
+        return poll.save()
       }
     })
+    .then(function (d) {
+      return res.status(200).send({ redirect: req.get('referer') })
+    })
     .catch(function (err) {
-      throw err
+      console.error(err)
     });
   }
 
@@ -105,7 +104,7 @@ class Poll {
       return res.status(201).send({redirect: '/my-polls'})
     })
     .catch(function (err) {
-      console.log(err)
+      console.error(err)
       return res.sendStatus(500)
     })
   }
